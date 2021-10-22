@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmoteka</title>
+
+    <style>
+        table, th ,td, tr {border: 2px solid black; padding: 2px;}
+    </style>
+</head>
+    <style>
+        h1 {background-color: grey;}
+        h2 {background-color: grey;}
+    </style>
+
+        <h1>Filmoteka: </h1>
+    <table>
+        <thead>
+            <th> Tytuł </th>
+            <th> Rok produkcji </th>
+            <th>Format</th>
+            <th>Dostępność</th>
+        </thead>
+        <tbody>
+        {% for film in library %}
+        <tr>
+            <td><a href="/library/{{ loop.library }}">{{ film.title }}</a> </td>
+            <td>{{ film.production }}</td>
+            <td>{{ film.format }}</td>
+            <td>{{ film.available }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <div>
+        <br>
+        <h2>Dodaj nową pozycję: </h2>
+        <form method="POST" action="/library/">
+            {{ form.hidden_tag() }}
+            <table>
+                {%for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <td>{{ field.label }} {% if field.flags.required %}*{% endif %}</td>
+                    <td>{{ field }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <input type="submit" value="Dodaj">
+        </form>
+    </div>
+
+
+
+</body>
+</html>
