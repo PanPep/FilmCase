@@ -22,9 +22,9 @@
             <th>Dostępność</th>
         </thead>
         <tbody>
-        {% for film in library %}
+        {% for film in films %}
         <tr>
-            <td><a href="/library/{{ loop.library }}">{{ film.title }}</a> </td>
+            <td><a href="/library/{{ loop.index }}">{{ film.title }}</a> </td>
             <td>{{ film.production }}</td>
             <td>{{ film.format }}</td>
             <td>{{ film.available }}</td>
